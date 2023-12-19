@@ -1,0 +1,187 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f4;
+}
+
+nav {
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-weight: bold;
+  font-size: 1.5em;
+  text-decoration: none;
+  color: white;
+}
+
+header {
+  background-color: #4CAF50;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+
+main {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chore-form {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.chore-form input,
+.chore-form select,
+.chore-form .btn {
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: calc(70% - 12px); /* Adjust width to account for margin and padding */
+}
+
+.assigned-to-input,
+.day-of-week-input {
+  width: calc(15% - 12px); /* Adjust width to account for margin and padding */
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #5cb85c;
+  color: white;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #449d44;
+}
+
+.allowance-board {
+  padding: 10px;
+}
+
+.allowance-item {
+  background-color: #f7f7f7;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+/* Chore chart grid styles */
+.chore-chart-container {
+  display: grid;
+  grid-template-columns: auto repeat(7, 1fr); /* One column for names, seven for days */
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.grid-header,
+.person-row {
+  display: contents;
+}
+
+.header-cell,
+.name-cell,
+.grid-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.header-cell {
+  background-color: #4CAF50; /* Header background */
+  color: white;
+}
+
+.name-cell {
+  background-color: #f7f7f7; /* Light grey background */
+  font-weight: bold;
+}
+
+.grid-cell {
+  background-color: white;
+  min-height: 50px; /* Ensures that cells have a consistent height */
+}
+
+.grid-cell:hover {
+  background-color: #e8f5e9; /* Light green background on hover */
+}
+
+/* Style for chore items marked as done */
+.chore-done {
+  text-decoration: line-through;
+}
+
+/* Additional styles for chore entries and buttons */
+.chore-entry {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Align items to the center of the flex container */
+  margin-bottom: 5px; /* Space between entries */
+}
+
+.chore-text {
+  margin-bottom: 4px; /* Space between the chore text and the buttons */
+}
+
+.chore-buttons {
+  display: flex;
+  justify-content: center; /* Align buttons to the center of the flex container */
+}
+
+.chore-buttons button {
+  margin-right: 4px; /* Space between buttons */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .chore-form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .chore-form input,
+  .chore-form select,
+  .btn {
+    width: 90%;
+    margin-bottom: 10px;
+  }
+
+  .nav-container,
+  main {
+    width: 95%;
+  }
+
+  .chore-chart-container {
+    grid-template-columns: auto repeat(7, minmax(0, 1fr)); /* Responsive width for day columns */
+  }
+}

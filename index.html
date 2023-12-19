@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Chore Board</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-container">
+      <a href="#" class="nav-logo">The Herring</a>
+    </div>
+  </nav>
+  <header>
+    <h1>Chore Chart</h1>
+  </header>
+  <main>
+    <form id="chore-form" class="chore-form">
+      <input type="text" id="chore-input" placeholder="Enter a new chore..." required>
+      <input type="number" id="chore-amount-input" placeholder="Dollar amount..." min="0" step="0.50" required>
+      <select id="assigned-to-input" class="assigned-to-input">
+        <option value="" disabled selected>Assign to...</option>
+        <option value="Dad">Dad</option>
+        <option value="Mom">Mom</option>
+        <option value="Bella">Bella</option>
+        <option value="Tiana">Tiana</option>
+        <option value="MJ">MJ</option>
+      </select>
+      <select id="day-of-week-input" class="day-of-week-input">
+        <option value="" disabled selected>Day of week...</option>
+        <option value="Sunday">Sunday</option>
+        <option value="Monday">Monday</option>
+        <option value="Tuesday">Tuesday</option>
+        <option value="Wednesday">Wednesday</option>
+        <option value="Thursday">Thursday</option>
+        <option value="Friday">Friday</option>
+        <option value="Saturday">Saturday</option>
+      </select>
+      <button type="submit" class="btn add-chore-btn">Add Chore</button>
+      <button type="button" class="btn clear-all-btn">Clear All</button>
+    </form>
+    
+    <section id="chore-chart-container" class="chore-chart-container">
+      <div class="grid-header">
+        <div class="header-cell">Name</div>
+        <div class="header-cell">Sunday</div>
+        <div class="header-cell">Monday</div>
+        <div class="header-cell">Tuesday</div>
+        <div class="header-cell">Wednesday</div>
+        <div class="header-cell">Thursday</div>
+        <div class="header-cell">Friday</div>
+        <div class="header-cell">Saturday</div>
+      </div>
+      <!-- Rows for each family member -->
+      <div id="row-for-dad" class="person-row">
+        <div class="name-cell">Dad</div>
+        <div class="grid-cell"></div> <!-- Sunday -->
+        <div class="grid-cell"></div> <!-- Monday -->
+        <div class="grid-cell"></div> <!-- Tuesday -->
+        <div class="grid-cell"></div> <!-- Wednesday -->
+        <div class="grid-cell"></div> <!-- Thursday -->
+        <div class="grid-cell"></div> <!-- Friday -->
+        <div class="grid-cell"></div> <!-- Saturday -->
+      </div>
+      <div id="row-for-mom" class="person-row">
+        <div class="name-cell">Mom</div>
+        <div class="grid-cell"></div> <!-- Sunday -->
+        <div class="grid-cell"></div> <!-- Monday -->
+        <div class="grid-cell"></div> <!-- Tuesday -->
+        <div class="grid-cell"></div> <!-- Wednesday -->
+        <div class="grid-cell"></div> <!-- Thursday -->
+        <div class="grid-cell"></div> <!-- Friday -->
+        <div class="grid-cell"></div> <!-- Saturday -->
+      </div>
+      <div id="row-for-bella" class="person-row">
+        <div class="name-cell">Bella</div>
+        <div class="grid-cell"></div> <!-- Sunday -->
+        <div class="grid-cell"></div> <!-- Monday -->
+        <div class="grid-cell"></div> <!-- Tuesday -->
+        <div class="grid-cell"></div> <!-- Wednesday -->
+        <div class="grid-cell"></div> <!-- Thursday -->
+        <div class="grid-cell"></div> <!-- Friday -->
+        <div class="grid-cell"></div> <!-- Saturday -->
+      </div>
+      <div id="row-for-tiana" class="person-row">
+        <div class="name-cell">Tiana</div>
+        <div class="grid-cell"></div> <!-- Sunday -->
+        <div class="grid-cell"></div> <!-- Monday -->
+        <div class="grid-cell"></div> <!-- Tuesday -->
+        <div class="grid-cell"></div> <!-- Wednesday -->
+        <div class="grid-cell"></div> <!-- Thursday -->
+        <div class="grid-cell"></div> <!-- Friday -->
+        <div class="grid-cell"></div> <!-- Saturday -->
+      </div>
+      <div id="row-for-mj" class="person-row">
+        <div class="name-cell">MJ</div>
+        <div class="grid-cell"></div> <!-- Sunday -->
+        <div class="grid-cell"></div> <!-- Monday -->
+        <div class="grid-cell"></div> <!-- Tuesday -->
+        <div class="grid-cell"></div> <!-- Wednesday -->
+        <div class="grid-cell"></div> <!-- Thursday -->
+        <div class="grid-cell"></div> <!-- Friday -->
+        <div class="grid-cell"></div> <!-- Saturday -->
+      </div>
+    </section>
+    <section id="allowance-board" class="allowance-board">
+      <h2>Weekly Allowances</h2>
+      <div id="allowance-bella" class="allowance-item">Bella: $<span id="allowance-bella-value">0</span></div>
+      <div id="allowance-tiana" class="allowance-item">Tiana: $<span id="allowance-tiana-value">0</span></div>
+      <div id="allowance-mj" class="allowance-item">MJ: $<span id="allowance-mj-value">0</span></div>
+    </section>
+  </main>
+  <script src="./assets/js/main.js"></script>
+</body>
+</html>
