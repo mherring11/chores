@@ -38,13 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       chores[assignedTo][dayOfWeek].push({ chore, amount, done: false });
 
-      if (assignedTo in allowances) {
-          allowances[assignedTo] += amount;
-      }
-
       saveChores();
       updateChoreChartDisplay();
-      updateAllowances();
+      resetFormFields();
   });
 
   clearAllBtn.addEventListener('click', () => {
@@ -85,7 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       Object.keys(chores).forEach(person => {
           Object.keys(chores[person]).forEach(dayOfWeek => {
+              let allChoresDone = true;
               let firstEntry = true;
+
               chores[person][dayOfWeek].forEach((choreItem, index) => {
                   const dayIndex = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].indexOf(dayOfWeek);
                   const personRow = document.getElementById(`row-for-${person.toLowerCase()}`);
@@ -100,26 +98,19 @@ document.addEventListener('DOMContentLoaded', () => {
                       firstEntry = false;
                   }
 
+                  allChoresDone = allChoresDone && choreItem.done;
+
                   const choreDiv = document.createElement('div');
                   choreDiv.className = 'chore-entry';
 
                   const choreTextSpan = document.createElement('span');
-                  choreTextSpan.className = 'chore-text';
-                  choreTextSpan.textContent = choreItem.chore;
-                  if (choreItem.done) {
-                      choreTextSpan.classList.add('chore-done');
-                  }
+                  choreTextSpan.className = choreItem.done ? 'chore-text chore-done' : 'chore-text';
+                  choreTextSpan.textContent = `${choreItem.chore} ($${choreItem.amount.toFixed(2)})`;
                   choreDiv.appendChild(choreTextSpan);
-
-                  if (!choreItem.done) {
-                      const choreAmountSpan = document.createElement('span');
-                      choreAmountSpan.textContent = ` ($${choreItem.amount.toFixed(2)})`;
-                      choreDiv.appendChild(choreAmountSpan);
-                  }
 
                   const doneButton = document.createElement('button');
                   doneButton.textContent = choreItem.done ? 'Undo' : 'Done';
-                  doneButton.onclick = () => toggleChoreDone(person, dayOfWeek, index);
+                  doneButton.onclick = () => toggleChoreDone(person, dayOfWeek, index, choreItem.amount);
                   choreDiv.appendChild(doneButton);
 
                   const editButton = document.createElement('button');
@@ -128,6 +119,12 @@ document.addEventListener('DOMContentLoaded', () => {
                   choreDiv.appendChild(editButton);
 
                   choreCell.appendChild(choreDiv);
+
+                  if (allChoresDone) {
+                      personRow.children[dayIndex + 1].style.backgroundColor = 'lightgreen';
+                  } else {
+                      personRow.children[dayIndex + 1].style.backgroundColor = '';
+                  }
               });
           });
       });
@@ -163,13 +160,20 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   }
 
-  window.toggleChoreDone = function(person, dayOfWeek, choreIndex) {
+  function resetFormFields() {
+      choreInput.value = '';
+      choreAmountInput.value = '';
+      assignedToInput.selectedIndex = 0;
+      dayOfWeekInput.selectedIndex = 0;
+  }
+
+  window.toggleChoreDone = function(person, dayOfWeek, choreIndex, amount) {
       const choreItem = chores[person][dayOfWeek][choreIndex];
       choreItem.done = !choreItem.done;
       if (choreItem.done) {
-          allowances[person] -= choreItem.amount;
+          allowances[person] += amount;
       } else {
-          allowances[person] += choreItem.amount;
+          allowances[person] -= amount;
       }
       saveChores();
       updateChoreChartDisplay();
