@@ -85,6 +85,8 @@ main {
 
 .allowance-board {
   padding: 10px;
+  width: 50%; /* Set the width to half of the parent */
+  float: left; /* Align to the left */
 }
 
 .allowance-item {
@@ -162,7 +164,26 @@ main {
   margin-right: 4px; /* Space between buttons */
 }
 
-/* Responsive design */
+.to-do-section {
+  width: 50%; /* Set the width to half of the parent */
+  float: right; /* Align to the right */
+  padding: 10px;
+}
+
+.to-do-item {
+  background-color: #f7f7f7;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive design adjustments */
 @media (max-width: 768px) {
   .chore-form {
     flex-direction: column;
@@ -183,5 +204,11 @@ main {
 
   .chore-chart-container {
     grid-template-columns: auto repeat(7, minmax(0, 1fr)); /* Responsive width for day columns */
+  }
+
+  .allowance-board,
+  .to-do-section {
+    width: 100%;
+    float: none;
   }
 }

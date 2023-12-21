@@ -41,7 +41,7 @@
       <button type="submit" class="btn add-chore-btn">Add Chore</button>
       <button type="button" class="btn clear-all-btn">Clear All</button>
     </form>
-    
+
     <section id="chore-chart-container" class="chore-chart-container">
       <div class="grid-header">
         <div class="header-cell">Name</div>
@@ -110,6 +110,15 @@
       <div id="allowance-bella" class="allowance-item">Bella: $<span id="allowance-bella-value">0</span></div>
       <div id="allowance-tiana" class="allowance-item">Tiana: $<span id="allowance-tiana-value">0</span></div>
       <div id="allowance-mj" class="allowance-item">MJ: $<span id="allowance-mj-value">0</span></div>
+    </section>
+    <!-- To-Do List Section -->
+    <section id="to-do-section" style="float: right;">
+      <h2>To-Do List</h2>
+      <div id="to-do-list">
+        <!-- To-Do items will be added here -->
+      </div>
+      <input type="text" id="new-to-do-input" placeholder="Enter a new task" required>
+      <button type="button" id="add-to-do-btn">Add Task</button>
     </section>
   </main>
   <script src="./assets/js/main.js"></script>
